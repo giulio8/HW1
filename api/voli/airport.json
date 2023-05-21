@@ -1,0 +1,40 @@
+{
+    "type":"location",
+    "subType":"AIRPORT",
+    "name":"SKY HARBOR INTL",
+    "detailedName":"PHOENIX\/AZ\/US:SKY HARBOR INTL",
+    "timeZoneOffset":"-07:00",
+    "iataCode":"PHX",
+    "geoCode":
+    {
+        "latitude":33.43556,
+        "longitude":-111.9981
+    },
+    "address":
+    {
+        "cityName":"PHOENIX",
+        "cityCode":"PHX",
+        "countryName":
+        "UNITED STATES OF AMERICA",
+        "countryCode":"US",
+        "stateCode":"AZ",
+        "regionCode":"NAMER"
+    },
+    "distance":
+    {
+        "value":291,
+        "unit":"KM"
+    },
+    "analytics":
+    {
+        "flights":
+        {
+            "score":29
+        },
+        "travelers":
+        {
+            "score":27
+        }
+    },
+    "relevance":10.09724
+}

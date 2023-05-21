@@ -1,0 +1,73 @@
+#introduction h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+#introduction p {
+    font-size: 20px;
+    margin: 20px;
+}
+
+#gallery {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.gallery-image {
+    height: 500px;
+    width: 500px;
+    background-color: cornsilk;
+    border: 5px dashed rosybrown;
+    padding: 26px;
+    margin: 20px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.gallery-image:hover {
+    background-color: rgba(143, 223, 111, 0.6);
+}
+
+section h2.subtitle {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+#post-button {
+    font-size: 22px;
+    border-radius: 20px;
+    margin: 30px;
+    cursor: pointer;
+    padding: 20px;
+    border: 3px solid darkcyan;
+    background-color: palevioletred;
+}
+
+#post-button:hover {
+    background-color: darkgrey;
+    color: palevioletred;
+}
+
+#post-image-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#post-image-form input {
+    margin: 15px;
+    font-size: 22px;
+}
+
+#post-image-form label {
+    margin: 10px;
+    font-size: 22px;
+}

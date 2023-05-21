@@ -1,0 +1,1310 @@
+{
+    "meta": {
+        "count": 5,
+        "links": {
+            "self": "https://test.api.amadeus.com/v2/shopping/flight-offers?destinationLocationCode=LON&departureDate=2023-05-31&returnDate=2023-06-14&adults=2&max=5&originLocationCode=CTA"
+        }
+    },
+    "data": [
+        {
+            "type": "flight-offer",
+            "id": "1",
+            "source": "GDS",
+            "instantTicketingRequired": false,
+            "nonHomogeneous": false,
+            "oneWay": false,
+            "lastTicketingDate": "2023-05-18",
+            "lastTicketingDateTime": "2023-05-18",
+            "numberOfBookableSeats": 6,
+            "itineraries": [
+                {
+                    "duration": "PT13H25M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "CTA",
+                                "at": "2023-05-31T20:50:00"
+                            },
+                            "arrival": {
+                                "iataCode": "CPH",
+                                "terminal": "3",
+                                "at": "2023-05-31T23:55:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "3745",
+                            "aircraft": {
+                                "code": "7M8"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT3H5M",
+                            "id": "3",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        },
+                        {
+                            "departure": {
+                                "iataCode": "CPH",
+                                "terminal": "2",
+                                "at": "2023-06-01T08:00:00"
+                            },
+                            "arrival": {
+                                "iataCode": "LGW",
+                                "terminal": "S",
+                                "at": "2023-06-01T09:15:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "3510",
+                            "aircraft": {
+                                "code": "7M8"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT2H15M",
+                            "id": "4",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                },
+                {
+                    "duration": "PT8H40M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "LGW",
+                                "terminal": "S",
+                                "at": "2023-06-14T09:20:00"
+                            },
+                            "arrival": {
+                                "iataCode": "ARN",
+                                "terminal": "5",
+                                "at": "2023-06-14T12:55:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "4452",
+                            "aircraft": {
+                                "code": "73H"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT2H35M",
+                            "id": "11",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        },
+                        {
+                            "departure": {
+                                "iataCode": "ARN",
+                                "terminal": "5",
+                                "at": "2023-06-14T15:25:00"
+                            },
+                            "arrival": {
+                                "iataCode": "CTA",
+                                "at": "2023-06-14T19:00:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "4371",
+                            "aircraft": {
+                                "code": "73H"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT3H35M",
+                            "id": "12",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                }
+            ],
+            "price": {
+                "currency": "EUR",
+                "total": "337.88",
+                "base": "186.00",
+                "fees": [
+                    {
+                        "amount": "0.00",
+                        "type": "SUPPLIER"
+                    },
+                    {
+                        "amount": "0.00",
+                        "type": "TICKETING"
+                    }
+                ],
+                "grandTotal": "337.88",
+                "additionalServices": [
+                    {
+                        "amount": "91.00",
+                        "type": "CHECKED_BAGS"
+                    }
+                ]
+            },
+            "pricingOptions": {
+                "fareType": [
+                    "PUBLISHED"
+                ],
+                "includedCheckedBagsOnly": false
+            },
+            "validatingAirlineCodes": [
+                "DY"
+            ],
+            "travelerPricings": [
+                {
+                    "travelerId": "1",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "168.94",
+                        "base": "93.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "3",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QKCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "4",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "11",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "XLF",
+                            "brandedFare": "LOWFARE",
+                            "class": "X",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "12",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QHCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "travelerId": "2",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "168.94",
+                        "base": "93.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "3",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QKCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "4",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "11",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "XLF",
+                            "brandedFare": "LOWFARE",
+                            "class": "X",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "12",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QHCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "2",
+            "source": "GDS",
+            "instantTicketingRequired": false,
+            "nonHomogeneous": false,
+            "oneWay": false,
+            "lastTicketingDate": "2023-05-18",
+            "lastTicketingDateTime": "2023-05-18",
+            "numberOfBookableSeats": 6,
+            "itineraries": [
+                {
+                    "duration": "PT19H",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "CTA",
+                                "at": "2023-05-31T20:50:00"
+                            },
+                            "arrival": {
+                                "iataCode": "CPH",
+                                "terminal": "3",
+                                "at": "2023-05-31T23:55:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "3745",
+                            "aircraft": {
+                                "code": "7M8"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT3H5M",
+                            "id": "1",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        },
+                        {
+                            "departure": {
+                                "iataCode": "CPH",
+                                "terminal": "2",
+                                "at": "2023-06-01T13:55:00"
+                            },
+                            "arrival": {
+                                "iataCode": "LGW",
+                                "terminal": "S",
+                                "at": "2023-06-01T14:50:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "3516",
+                            "aircraft": {
+                                "code": "7M8"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT1H55M",
+                            "id": "2",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                },
+                {
+                    "duration": "PT8H40M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "LGW",
+                                "terminal": "S",
+                                "at": "2023-06-14T09:20:00"
+                            },
+                            "arrival": {
+                                "iataCode": "ARN",
+                                "terminal": "5",
+                                "at": "2023-06-14T12:55:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "4452",
+                            "aircraft": {
+                                "code": "73H"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT2H35M",
+                            "id": "11",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        },
+                        {
+                            "departure": {
+                                "iataCode": "ARN",
+                                "terminal": "5",
+                                "at": "2023-06-14T15:25:00"
+                            },
+                            "arrival": {
+                                "iataCode": "CTA",
+                                "at": "2023-06-14T19:00:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "4371",
+                            "aircraft": {
+                                "code": "73H"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT3H35M",
+                            "id": "12",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                }
+            ],
+            "price": {
+                "currency": "EUR",
+                "total": "337.88",
+                "base": "186.00",
+                "fees": [
+                    {
+                        "amount": "0.00",
+                        "type": "SUPPLIER"
+                    },
+                    {
+                        "amount": "0.00",
+                        "type": "TICKETING"
+                    }
+                ],
+                "grandTotal": "337.88",
+                "additionalServices": [
+                    {
+                        "amount": "91.00",
+                        "type": "CHECKED_BAGS"
+                    }
+                ]
+            },
+            "pricingOptions": {
+                "fareType": [
+                    "PUBLISHED"
+                ],
+                "includedCheckedBagsOnly": false
+            },
+            "validatingAirlineCodes": [
+                "DY"
+            ],
+            "travelerPricings": [
+                {
+                    "travelerId": "1",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "168.94",
+                        "base": "93.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "1",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QKCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "2",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "11",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "XLF",
+                            "brandedFare": "LOWFARE",
+                            "class": "X",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "12",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QHCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "travelerId": "2",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "168.94",
+                        "base": "93.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "1",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QKCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "2",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "11",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "XLF",
+                            "brandedFare": "LOWFARE",
+                            "class": "X",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "12",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QHCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "3",
+            "source": "GDS",
+            "instantTicketingRequired": false,
+            "nonHomogeneous": false,
+            "oneWay": false,
+            "lastTicketingDate": "2023-05-18",
+            "lastTicketingDateTime": "2023-05-18",
+            "numberOfBookableSeats": 6,
+            "itineraries": [
+                {
+                    "duration": "PT22H30M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "CTA",
+                                "at": "2023-05-31T20:50:00"
+                            },
+                            "arrival": {
+                                "iataCode": "CPH",
+                                "terminal": "3",
+                                "at": "2023-05-31T23:55:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "3745",
+                            "aircraft": {
+                                "code": "7M8"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT3H5M",
+                            "id": "5",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        },
+                        {
+                            "departure": {
+                                "iataCode": "CPH",
+                                "terminal": "2",
+                                "at": "2023-06-01T17:25:00"
+                            },
+                            "arrival": {
+                                "iataCode": "LGW",
+                                "terminal": "S",
+                                "at": "2023-06-01T18:20:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "3518",
+                            "aircraft": {
+                                "code": "73H"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT1H55M",
+                            "id": "6",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                },
+                {
+                    "duration": "PT8H40M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "LGW",
+                                "terminal": "S",
+                                "at": "2023-06-14T09:20:00"
+                            },
+                            "arrival": {
+                                "iataCode": "ARN",
+                                "terminal": "5",
+                                "at": "2023-06-14T12:55:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "4452",
+                            "aircraft": {
+                                "code": "73H"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT2H35M",
+                            "id": "11",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        },
+                        {
+                            "departure": {
+                                "iataCode": "ARN",
+                                "terminal": "5",
+                                "at": "2023-06-14T15:25:00"
+                            },
+                            "arrival": {
+                                "iataCode": "CTA",
+                                "at": "2023-06-14T19:00:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "4371",
+                            "aircraft": {
+                                "code": "73H"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT3H35M",
+                            "id": "12",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                }
+            ],
+            "price": {
+                "currency": "EUR",
+                "total": "337.88",
+                "base": "186.00",
+                "fees": [
+                    {
+                        "amount": "0.00",
+                        "type": "SUPPLIER"
+                    },
+                    {
+                        "amount": "0.00",
+                        "type": "TICKETING"
+                    }
+                ],
+                "grandTotal": "337.88",
+                "additionalServices": [
+                    {
+                        "amount": "91.00",
+                        "type": "CHECKED_BAGS"
+                    }
+                ]
+            },
+            "pricingOptions": {
+                "fareType": [
+                    "PUBLISHED"
+                ],
+                "includedCheckedBagsOnly": false
+            },
+            "validatingAirlineCodes": [
+                "DY"
+            ],
+            "travelerPricings": [
+                {
+                    "travelerId": "1",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "168.94",
+                        "base": "93.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "5",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QKCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "6",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "11",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "XLF",
+                            "brandedFare": "LOWFARE",
+                            "class": "X",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "12",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QHCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "travelerId": "2",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "168.94",
+                        "base": "93.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "5",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QKCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "6",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "11",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "XLF",
+                            "brandedFare": "LOWFARE",
+                            "class": "X",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "12",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QHCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "4",
+            "source": "GDS",
+            "instantTicketingRequired": false,
+            "nonHomogeneous": false,
+            "oneWay": false,
+            "lastTicketingDate": "2023-05-18",
+            "lastTicketingDateTime": "2023-05-18",
+            "numberOfBookableSeats": 9,
+            "itineraries": [
+                {
+                    "duration": "PT13H25M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "CTA",
+                                "at": "2023-05-31T20:50:00"
+                            },
+                            "arrival": {
+                                "iataCode": "CPH",
+                                "terminal": "3",
+                                "at": "2023-05-31T23:55:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "3745",
+                            "aircraft": {
+                                "code": "7M8"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT3H5M",
+                            "id": "3",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        },
+                        {
+                            "departure": {
+                                "iataCode": "CPH",
+                                "terminal": "2",
+                                "at": "2023-06-01T08:00:00"
+                            },
+                            "arrival": {
+                                "iataCode": "LGW",
+                                "terminal": "S",
+                                "at": "2023-06-01T09:15:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "3510",
+                            "aircraft": {
+                                "code": "7M8"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT2H15M",
+                            "id": "4",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                },
+                {
+                    "duration": "PT9H5M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "LGW",
+                                "terminal": "S",
+                                "at": "2023-06-14T10:00:00"
+                            },
+                            "arrival": {
+                                "iataCode": "CPH",
+                                "terminal": "3",
+                                "at": "2023-06-14T12:50:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "3511",
+                            "aircraft": {
+                                "code": "73H"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT1H50M",
+                            "id": "7",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        },
+                        {
+                            "departure": {
+                                "iataCode": "CPH",
+                                "terminal": "2",
+                                "at": "2023-06-14T17:00:00"
+                            },
+                            "arrival": {
+                                "iataCode": "CTA",
+                                "at": "2023-06-14T20:05:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "3744",
+                            "aircraft": {
+                                "code": "7M8"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT3H5M",
+                            "id": "8",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                }
+            ],
+            "price": {
+                "currency": "EUR",
+                "total": "357.00",
+                "base": "194.00",
+                "fees": [
+                    {
+                        "amount": "0.00",
+                        "type": "SUPPLIER"
+                    },
+                    {
+                        "amount": "0.00",
+                        "type": "TICKETING"
+                    }
+                ],
+                "grandTotal": "357.00",
+                "additionalServices": [
+                    {
+                        "amount": "86.00",
+                        "type": "CHECKED_BAGS"
+                    }
+                ]
+            },
+            "pricingOptions": {
+                "fareType": [
+                    "PUBLISHED"
+                ],
+                "includedCheckedBagsOnly": false
+            },
+            "validatingAirlineCodes": [
+                "DY"
+            ],
+            "travelerPricings": [
+                {
+                    "travelerId": "1",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "178.50",
+                        "base": "97.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "3",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QKCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "4",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "7",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "8",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QKCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "travelerId": "2",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "178.50",
+                        "base": "97.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "3",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QKCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "4",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "7",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "8",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QKCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "flight-offer",
+            "id": "5",
+            "source": "GDS",
+            "instantTicketingRequired": false,
+            "nonHomogeneous": false,
+            "oneWay": false,
+            "lastTicketingDate": "2023-05-18",
+            "lastTicketingDateTime": "2023-05-18",
+            "numberOfBookableSeats": 9,
+            "itineraries": [
+                {
+                    "duration": "PT13H25M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "CTA",
+                                "at": "2023-05-31T20:50:00"
+                            },
+                            "arrival": {
+                                "iataCode": "CPH",
+                                "terminal": "3",
+                                "at": "2023-05-31T23:55:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "3745",
+                            "aircraft": {
+                                "code": "7M8"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT3H5M",
+                            "id": "3",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        },
+                        {
+                            "departure": {
+                                "iataCode": "CPH",
+                                "terminal": "2",
+                                "at": "2023-06-01T08:00:00"
+                            },
+                            "arrival": {
+                                "iataCode": "LGW",
+                                "terminal": "S",
+                                "at": "2023-06-01T09:15:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "3510",
+                            "aircraft": {
+                                "code": "7M8"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT2H15M",
+                            "id": "4",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                },
+                {
+                    "duration": "PT10H20M",
+                    "segments": [
+                        {
+                            "departure": {
+                                "iataCode": "LGW",
+                                "terminal": "S",
+                                "at": "2023-06-14T08:45:00"
+                            },
+                            "arrival": {
+                                "iataCode": "CPH",
+                                "terminal": "3",
+                                "at": "2023-06-14T11:35:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "3509",
+                            "aircraft": {
+                                "code": "73H"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT1H50M",
+                            "id": "9",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        },
+                        {
+                            "departure": {
+                                "iataCode": "CPH",
+                                "terminal": "2",
+                                "at": "2023-06-14T17:00:00"
+                            },
+                            "arrival": {
+                                "iataCode": "CTA",
+                                "at": "2023-06-14T20:05:00"
+                            },
+                            "carrierCode": "D8",
+                            "number": "3744",
+                            "aircraft": {
+                                "code": "7M8"
+                            },
+                            "operating": {
+                                "carrierCode": "D8"
+                            },
+                            "duration": "PT3H5M",
+                            "id": "10",
+                            "numberOfStops": 0,
+                            "blacklistedInEU": false
+                        }
+                    ]
+                }
+            ],
+            "price": {
+                "currency": "EUR",
+                "total": "357.00",
+                "base": "194.00",
+                "fees": [
+                    {
+                        "amount": "0.00",
+                        "type": "SUPPLIER"
+                    },
+                    {
+                        "amount": "0.00",
+                        "type": "TICKETING"
+                    }
+                ],
+                "grandTotal": "357.00",
+                "additionalServices": [
+                    {
+                        "amount": "86.00",
+                        "type": "CHECKED_BAGS"
+                    }
+                ]
+            },
+            "pricingOptions": {
+                "fareType": [
+                    "PUBLISHED"
+                ],
+                "includedCheckedBagsOnly": false
+            },
+            "validatingAirlineCodes": [
+                "DY"
+            ],
+            "travelerPricings": [
+                {
+                    "travelerId": "1",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "178.50",
+                        "base": "97.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "3",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QKCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "4",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "9",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "10",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QKCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "travelerId": "2",
+                    "fareOption": "STANDARD",
+                    "travelerType": "ADULT",
+                    "price": {
+                        "currency": "EUR",
+                        "total": "178.50",
+                        "base": "97.00"
+                    },
+                    "fareDetailsBySegment": [
+                        {
+                            "segmentId": "3",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QKCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "4",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "9",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        },
+                        {
+                            "segmentId": "10",
+                            "cabin": "ECONOMY",
+                            "fareBasis": "QKCALF",
+                            "brandedFare": "LOWFARE",
+                            "class": "Q",
+                            "includedCheckedBags": {
+                                "quantity": 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "dictionaries": {
+        "locations": {
+            "CTA": {
+                "cityCode": "CTA",
+                "countryCode": "IT"
+            },
+            "CPH": {
+                "cityCode": "CPH",
+                "countryCode": "DK"
+            },
+            "LGW": {
+                "cityCode": "LON",
+                "countryCode": "GB"
+            },
+            "ARN": {
+                "cityCode": "STO",
+                "countryCode": "SE"
+            }
+        },
+        "aircraft": {
+            "7M8": "BOEING 737 MAX 8",
+            "73H": "BOEING 737-800 (WINGLETS)"
+        },
+        "currencies": {
+            "EUR": "EURO"
+        },
+        "carriers": {
+            "D8": "Norwegian Air Sweden AOC AB"
+        }
+    }
+}
