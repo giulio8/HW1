@@ -22,7 +22,7 @@ if (empty($_POST['flight'])) {
 }
 
 // Set the variables for the query
-$flight = json_decode($_POST["flight"], true);
+$flight = json_decode($_POST['flight'], true);
 $data_prenotazione = date("Y-m-d");
 $origine = $flight["andata"]["tratte"][0]["partenza"]["iataCode"];
 $destinazione = $flight["andata"]["tratte"][count($flight["andata"]["tratte"]) - 1]["arrivo"]["iataCode"];
@@ -59,7 +59,7 @@ function saveFlightRequest($utente, $data_prenotazione, $origine, $destinazione,
             $data_partenza = mysqli_real_escape_string($conn, $tratta["partenza"]["at"]);
             $data_arrivo = mysqli_real_escape_string($conn, $tratta["arrivo"]["at"]);
 
-            $query = "INSERT INTO Andata (id, origine, destinazione, volo, data_partenza, data_arrivo, progressivo) VALUES ('$id_tratta', '$origine', '$destinazione', '$id', '$data_partenza', '$data_arrivo', '$i')";
+            $query = "INSERT INTO Tratte (id, origine, destinazione, volo, data_partenza, data_arrivo, progressivo, direzione) VALUES ('$id_tratta', '$origine', '$destinazione', '$id', '$data_partenza', '$data_arrivo', '$i', 'andata')";
             mysqli_query($conn, $query) or die(mysqli_error($conn));
         }
         if (isset($flight["ritorno"])) {
@@ -70,7 +70,7 @@ function saveFlightRequest($utente, $data_prenotazione, $origine, $destinazione,
                 $data_partenza = mysqli_real_escape_string($conn, $tratta["partenza"]["at"]);
                 $data_arrivo = mysqli_real_escape_string($conn, $tratta["arrivo"]["at"]);
 
-                $query = "INSERT INTO Ritorno (id, origine, destinazione, volo, data_partenza, data_arrivo, progressivo) VALUES ('$id_tratta', '$origine', '$destinazione', '$id', '$data_partenza', '$data_arrivo', '$i')";
+                $query = "INSERT INTO Tratte (id, origine, destinazione, volo, data_partenza, data_arrivo, progressivo, direzione) VALUES ('$id_tratta', '$origine', '$destinazione', '$id', '$data_partenza', '$data_arrivo', '$i', 'ritorno')";
                 mysqli_query($conn, $query) or die(mysqli_error($conn));
             }
         }

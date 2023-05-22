@@ -1,39 +1,32 @@
-
-function flightsRequest(origin, destination, departureDate, returnDate) {
-    origin = encodeURIComponent(origin);
-    destination = encodeURIComponent(destination);
-    departureDate = encodeURIComponent(departureDate);
-    returnDate = encodeURIComponent(returnDate);
-    return fetch("/api/voli/getFlightOffers.php?origin=" + origin + "&destination=" + destination + "&departureDate=" + departureDate + "&returnDate=" + returnDate);
+function prenotazioniRequest() {
+    return fetch("/api/prenotazioni/getPrenotazioni.php");
 }
 
-function bookFlightRequest(flight) {
-    var formData = new FormData();
-    formData.append('flight', JSON.stringify(flight));
-    return fetch("/api/prenotazioni/bookFlight.php", {
+function cancellaPrenotazioneRequest(id) {
+    formData = new FormData();
+    formData.append("id", id);
+    return fetch("/api/prenotazioni/eliminaPrenotazione.php", {
         method: "POST",
         body: formData
     });
 }
 
-function prenotaVolo(event) {
+//let flightsMap = {};
+
+function cancellaPrenotazione(event) {
     const id = event.currentTarget.dataset.flightId;
-    const flight = flightsMap[id];
-    console.log("flight: ", flight);
-    bookFlightRequest(flight).then(onSuccess, onError).then(json => {
+    cancellaPrenotazioneRequest(id).then(onSuccess, onError).then(json => {
         console.log(json);
-        alert("Prenotazione effettuata con successo!");
-        window.location.href = "/app/prenotazioni/prenotazioni.php";
+        alert("Prenotazione cancellata con successo!");
+        location.reload();
     }).catch(onErrorFlReq);
 }
 
-let flightsMap = {};
-
 function createTicketElement(flights) {
-    flightsMap = {};
-    const result = document.querySelector("#result");
+    //flightsMap = {};
+    const result = document.querySelector("#prenotazioni");
     for (let flight of flights) {
-        flightsMap[flight.id] = flight;
+        //flightsMap[flight.id] = flight;
         const ticket = document.createElement("div");
         ticket.classList.add("ticket");
         const h2 = document.createElement("h2");
@@ -91,12 +84,12 @@ function createTicketElement(flights) {
         const prezzo = document.createElement("div");
         prezzo.classList.add("price");
         prezzo.textContent = "Prezzo complessivo: " + flight.prezzo + " " + flight.valuta;
+        const cancelButton = document.createElement("button");
+        cancelButton.textContent = "Annulla prenotazione";
+        cancelButton.dataset.flightId = flight.id;
+        cancelButton.addEventListener("click", cancellaPrenotazione);
         ticket.appendChild(prezzo);
-        const bookButton = document.createElement("button");
-        bookButton.textContent = "Prenota";
-        bookButton.dataset.flightId = flight.id;
-        bookButton.addEventListener("click", prenotaVolo);
-        ticket.appendChild(bookButton);
+        ticket.appendChild(cancelButton);
         result.appendChild(ticket);
     }
     result.classList.remove("hidden");
@@ -104,36 +97,17 @@ function createTicketElement(flights) {
 
 
 function onErrorFlReq(errorResp) {
+    console.log(errorResp);
     errorResp.then(errors => {
         displayErrors(errors);
         hideLoader();
-        form.classList.remove("hidden");
-        window.scrollTo(0, document.body.scrollHeight);
     });
 }
 
-function search(event) {
-    event.preventDefault();
-    const form = document.querySelector("#search-form");
-    const formData = new FormData(form);
+showLoader();
+prenotazioniRequest().then(onSuccess, onError).then(json => {
+    createTicketElement(json);
+    hideLoader();
+}).catch(onErrorFlReq);
 
-    const origin = formData.get("origin");
-    const destination = formData.get("destination");
-    const partenzaDate = formData.get("partenzaDate");
-    const returnDate = formData.get("returnDate");
 
-    showLoader();
-    flightsRequest(origin, destination, partenzaDate, returnDate).then(onSuccess, onError).then(json => {
-        console.log(json);
-        let flights = json;
-        // we create the ticket element
-        createTicketElement(flights);
-        hideLoader();
-    }).catch(onErrorFlReq);
-
-}
-
-const form = document.querySelector("#search-form");
-form.addEventListener("submit", e => e.preventDefault());
-const button = document.querySelector("#search-button");
-button.addEventListener("click", search);

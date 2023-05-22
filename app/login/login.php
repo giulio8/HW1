@@ -1,6 +1,5 @@
 <?php
-
-require_once $_SERVER['DOCUMENT_ROOT'] . "/api/auth.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/app/auth.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/api/connection.php";
 // Start the session
 session_start();

@@ -2,8 +2,8 @@
 /*******************************************************
         Resituisce tutte le destinazioni postate dall'utente
 ********************************************************/
-require_once '../connection.php';
-require_once '../../app/auth.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/api/connection.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/app/auth.php';
 if (!$userid = checkAuth()) {
         http_response_code(401);
         exit;

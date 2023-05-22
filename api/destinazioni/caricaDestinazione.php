@@ -1,6 +1,6 @@
 <?php
-require_once '../connection.php';
-require_once '../../app/auth.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/api/connection.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/app/auth.php';
 // Check if the user is authenticated
 if (!$userid = checkAuth()) {
     http_response_code(401);

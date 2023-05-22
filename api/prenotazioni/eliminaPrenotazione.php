@@ -16,37 +16,36 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $error = array();
 
 // Check if the request fields are filled
-if (empty($_POST['titolo'])) {
+if (empty($_POST['id'])) {
     $error[] = "Dati insufficienti";
 }
 
 // Set the variables for the query
-$titolo = mysqli_real_escape_string($conn, $_POST['titolo']);
+$id = mysqli_real_escape_string($conn, $_POST['id']);
 
 
 if (count($error) === 0) {
-    // Check if the user is the owner of the destination and retrieve the image name
+    // Check if the user is the owner of the booking
+    $id = mysqli_real_escape_string($conn, $id);
     $username = mysqli_real_escape_string($conn, $userid);
-    $query = "SELECT immagine FROM destinazioni WHERE titolo = '$titolo' AND utente = '$username'";
+    $query = "SELECT * FROM Prenotazioni WHERE id = '$id'";
     $res = mysqli_query($conn, $query);
     if (mysqli_num_rows($res) > 0) {
-        // Delete the image from the server filesystem
         $row = mysqli_fetch_assoc($res);
-        $fileName = $row['immagine'];
-        $img_location = "/app/media/";
-        unlink($img_location . $fileName);
-    } else {
-        $error[] = "Non puoi eliminare questa destinazione";
-    }
-}
+        if ($row['utente'] === $username) {
+            // Delete the image from the database
+            $query = "DELETE FROM Prenotazioni WHERE id = '$id'";
+            if (mysqli_query($conn, $query)) {
+                mysqli_close($conn);
+            } else {
+                $error[] = "Errore di connessione al Database";
+            }
 
-// Delete the destination from the database
-if (count($error) === 0) {
-    $query = "DELETE FROM destinazioni WHERE titolo = '$titolo' AND utente = '$username'";
-    if (mysqli_query($conn, $query)) {
-        mysqli_close($conn);
+        } else {
+            $error[] = "Non sei autorizzato a cancellare questa prenotazione";
+        }
     } else {
-        $error[] = "Errore di connessione al Database";
+        $error[] = "Non è stata trovata la prenotazione da cancellare, riprovare più tardi";
     }
 }
 
@@ -55,7 +54,7 @@ if (count($error) > 0) {
     http_response_code(400);
     echo json_encode($error);
 } else {
-    $response = array("message" => "Immagine eliminata con successo");
+    $response = array("message" => "Prenotazione eliminata con successo");
     echo json_encode($response);
 }
 
