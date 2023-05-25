@@ -69,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="login.css" />
 </head>
 <body>
+    <div class="content">
     <h2>Login</h2>
     <p>Please fill in your credentials to login.</p>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> ">

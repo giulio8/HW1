@@ -5,64 +5,81 @@
 
 <body>
     <?php include '../navbar/navbar.php'; ?>
-    <header id="introduction">
-        <div id="overlay">
-            <h1 id="title">Profilo</h1>
-            <p>
-                Dettagli del tuo profilo.
-            </p>
-        </div>
-    </header>
-    <section>
-    <form name='user' disabled method='post' enctype="multipart/form-data" autocomplete="off">
-                <div class="input">
-                    <label for='firstname'>Nome</label>
-                    <input type='text' name='firstname' <?php if(isset($_POST["firstname"])){echo "value=".$_POST["firstname"];} ?>>
-                    <div><img src="./assets/close.svg"/></div>
-                </div>
-                <div class="username">
-                    <label for='lastname'>Cognome</label>
-                    <input type='text' name='lastname' <?php if(isset($_POST["username"])){echo "value=".$_POST["lastname"];} ?>>
-                    <div><img src="./assets/close.svg"/></div>
-                </div>
-                <div class="birthdate">
-                    <label for='birthdate'>Data di nascita</label>
-                    <input type='date' name='birthdate' <?php if(isset($_POST["birthdate"])){echo "value=".$_POST["birthdate"];} ?>>
-                    <div><img src="./assets/close.svg"/></div>
-                </div>
-                <div class="email">
-                    <label for='email'>Email</label>
-                    <input type='email' name='email' <?php if(isset($_POST["email"])){echo "value=".$_POST["email"];} ?>>
-                    <div><img src="./assets/close.svg"/><span>Formato email errato</span></div>
-                </div>
-                <div class="username">
-                    <label for='username'>Nome utente</label>
-                    <input type='text' name='username' <?php if(isset($_POST["username"])){echo "value=".$_POST["username"];} ?>>
-                    <div><img src="./assets/close.svg"/><span>Nome utente non disponibile</span></div>
-                </div>
-                <div class="password">
-                    <label for='password'>Password</label>
-                    <input type='password' name='password' <?php if(isset($_POST["password"])){echo "value=".$_POST["password"];} ?>>
-                    <div><img src="./assets/close.svg"/><span>Inserisci almeno 8 caratteri</span></div>
-                </div>
-                <div class="confirm_password">
-                    <label for='confirm_password'>Conferma Password</label>
-                    <input type='password' name='confirm_password' <?php if(isset($_POST["confirm_password"])){echo "value=".$_POST["confirm_password"];} ?>>
-                    <div><img src="./assets/close.svg"/><span>Le password non coincidono</span></div>
-                </div>
-    </section>
-    <section id="post">
-        <?php include '../loader/loader.php'; 
-              include '../error-display/error-display.php';
-        ?>
-    </section>
-    <section>
-        <div id="modal" class="modal hidden">
-            <div class="modal-content">
-                <span class="close">&times;</span>
+    <div class="content">
+        <header id="introduction">
+            <div id="overlay">
+                <h1 id="title">Profilo</h1>
+                <p>
+                    Dettagli del tuo profilo.
+                </p>
             </div>
-    </section>
+        </header>
+        <section class="app-flex-centered">
+            <form name='user' id="user-form" method='post' enctype="multipart/form-data" autocomplete="off">
+                <div id="username-input" class="input">
+                    <label for='username'>Nome utente</label>
+                    <input type='text' name='username' disabled>
+                </div>
+                <div id="firstname-input" class="input">
+                    <label for='firstname'>Nome</label>
+                    <div class="buttons-wrapper">
+                        <div class="buttons hidden" data-id="firstname">
+                            <img class="icon edit" src="../assets/edit-info.png"></img>
+                            <img class="icon cancel hidden" src="../assets/cancel.png"></img>
+                            <img class="icon save hidden" src="../assets/save.png"></img>
+                        </div>
+                    </div>
+                    <input type='text' name='firstname' disabled>
+                </div>
+                <div id="lastname-input" class="input">
+                    <label for='lastname'>Cognome</label>
+                    <div class="buttons-wrapper">
+                        <div class="buttons hidden" data-id="lastname">
+                            <img class="icon edit" src="../assets/edit-info.png"></img>
+                            <img class="icon cancel hidden" src="../assets/cancel.png"></img>
+                            <img class="icon save hidden" src="../assets/save.png"></img>
+                        </div>
+                    </div>
+                    <input type='text' name='lastname' disabled>
+                </div>
+                <div id="birthdate-input" class="input">
+                    <label for='birthdate'>Data di nascita</label>
+                    <div class="buttons-wrapper">
+                        <div class="buttons hidden" data-id="birthdate">
+                            <img class="icon edit" src="../assets/edit-info.png"></img>
+                            <img class="icon cancel hidden" src="../assets/cancel.png"></img>
+                            <img class="icon save hidden" src="../assets/save.png"></img>
+                        </div>
+                    </div>
+                    <input type='date' name='birthdate' disabled>
+                </div>
+                <div id="email-input" class="input">
+                    <label for='email'>Email</label>
+                    <div class="buttons-wrapper">
+                        <div class="buttons hidden" data-id="email">
+                            <img class="icon edit" src="../assets/edit-info.png"></img>
+                            <img class="icon cancel hidden" src="../assets/cancel.png"></img>
+                            <img class="icon save hidden" src="../assets/save.png"></img>
+                        </div>
+                    </div>
+                    <input type='email' name='email' disabled>
+                </div>
+                </fieldset>
+                <button id="submit-button" class="hidden" type="submit">Salva</button>
+            </form>
+            <?php include '../message-display/message-display.php'; ?>
+        </section>
+        <section id="post">
+            <?php include '../loader/loader.php'; ?>
+        </section>
+        <section>
+            <div id="modal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="input">&times;</span>
+                </div>
+        </section>
 
+    </div>
     <?php include '../footer/footer.php'; ?>
 </body>
 

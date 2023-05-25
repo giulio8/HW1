@@ -1,3 +1,73 @@
+:root {
+    --main-theme-color: cornflowerblue;
+    --secondary-theme-color: aliceblue;
+    --warning-theme-color: coral;
+    --base-font-size: 20px;
+}
+
+/* indispensabile per il corretto funzionamento del layout (comportamento del footer) */
+/* ------------------------------ */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+/* ------------------------------ */
+
+html {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.content {
+  margin: 0 auto;
+  width: 80vw;
+}
+
 .hidden {
     display: none !important;
+}
+
+#introduction {
+  font-size: 22px;
+  border-bottom: 2px solid darkviolet;
+  margin-bottom: 20px;
+}
+
+.app-flex-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-button {
+  padding: 10px;
+  margin: 10px;
+  font-size: var(--base-font-size);
+  border: 2px solid var(--main-theme-color);
+  border-radius: 4px;
+  background-color: var(--main-theme-color);
+  color: white;
+  cursor: pointer;
+}
+
+.app-dismiss-button {
+  background-color: var(--warning-theme-color);
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: 95vw;
+  }
 }

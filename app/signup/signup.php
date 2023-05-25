@@ -1,6 +1,6 @@
 <?php
-    require_once '../auth.php';
-    require_once '../../api/connection.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/api/connection.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/auth.php';
 
     if (checkAuth()) {
         header("Location: ../home/home.php");
@@ -76,6 +76,7 @@
         <title>Iscriviti - Musity modifica lunghezza password</title>
     </head>
     <body>
+    <div class="content">
         <div id="logo">
             Musity
         </div>

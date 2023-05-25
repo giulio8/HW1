@@ -1,6 +1,4 @@
 function onSuccess(resp) {
-    console.log("onSuccess");
-    //console.log(resp.status);
     if (resp.ok === false) {
         console.log("Problem with the request");
         throw resp.json();
@@ -12,4 +10,12 @@ function onSuccess(resp) {
 
 function onError(error) {
     console.log('Error: ' + error);
+}
+
+function hide(element) {
+    element.classList.add("hidden");
+}
+
+function show(element) {
+    element.classList.remove("hidden");
 }

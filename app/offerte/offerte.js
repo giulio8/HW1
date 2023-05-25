@@ -31,7 +31,7 @@ let flightsMap = {};
 
 function createTicketElement(flights) {
     flightsMap = {};
-    const result = document.querySelector("#result");
+    result.innerHTML = "";
     for (let flight of flights) {
         flightsMap[flight.id] = flight;
         const ticket = document.createElement("div");
@@ -99,7 +99,7 @@ function createTicketElement(flights) {
         ticket.appendChild(bookButton);
         result.appendChild(ticket);
     }
-    result.classList.remove("hidden");
+    show(result.parentElement);
 }
 
 
@@ -114,7 +114,6 @@ function onErrorFlReq(errorResp) {
 
 function search(event) {
     event.preventDefault();
-    const form = document.querySelector("#search-form");
     const formData = new FormData(form);
 
     const origin = formData.get("origin");
@@ -122,18 +121,32 @@ function search(event) {
     const partenzaDate = formData.get("partenzaDate");
     const returnDate = formData.get("returnDate");
 
+    hideMessages();
     showLoader();
     flightsRequest(origin, destination, partenzaDate, returnDate).then(onSuccess, onError).then(json => {
         console.log(json);
         let flights = json;
         // we create the ticket element
         createTicketElement(flights);
+        hide(form);
+        show(backButton);
         hideLoader();
     }).catch(onErrorFlReq);
 
 }
 
+function back(event) {
+    form.reset();
+    show(form);
+    hide(backButton);
+    hide(result);
+}
+
+
 const form = document.querySelector("#search-form");
 form.addEventListener("submit", e => e.preventDefault());
-const button = document.querySelector("#search-button");
-button.addEventListener("click", search);
+const searchButton = document.querySelector("#search-button");
+searchButton.addEventListener("click", search);
+const backButton = document.querySelector("#back-button");
+backButton.addEventListener("click", back);
+const result = document.querySelector("#result .result-content");

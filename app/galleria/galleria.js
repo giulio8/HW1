@@ -70,7 +70,7 @@ function onImageClick(event) {
 }
 
 function onEliminaDestinazione(event) {
-    const titolo = event.currentTarget.dataset.titolo;
+    const titolo = event.currentTarget.dataset.title;
     formTitolo = new FormData();
     formTitolo.append("titolo", titolo);
     deleteImageRequest(formTitolo).then(onSuccess, onError).then(json => {
@@ -80,7 +80,7 @@ function onEliminaDestinazione(event) {
 }
 
 function onTrovaVoliDestinazione(event) {
-    const titolo_destinazione = event.currentTarget.dataset.titolo;
+    const titolo_destinazione = event.currentTarget.dataset.title;
     console.log(titolo_destinazione);
     // We navigate to the flight offers page
     window.location.href = "/app/offerte/offerte.php?luogo=" + titolo_destinazione;
@@ -90,28 +90,51 @@ function onTrovaVoliDestinazione(event) {
 function onAlbumReturned(json) {
     console.log(json)
     const list = document.querySelector("#gallery");
+    //const directions = ["up", "down", "left", "right"];
     for (const i in json.data) {
         const img = json.data[i];
-        let imgEl = document.createElement("img");
+        fetch("destinazione.php?title="+img.titolo+"&description="+img.descrizione+"&image="+img.immagine).then(resp => {return resp.text()}, onError).then(text => {
+            list.innerHTML += text;
+            deleteButtons = document.querySelectorAll(".elimina");
+            for (const button of deleteButtons) {
+                button.addEventListener("click", onEliminaDestinazione);
+            }
+            voliButtons = document.querySelectorAll(".trova-voli");
+            for (const button of voliButtons) {
+                button.addEventListener("click", onTrovaVoliDestinazione);
+            }
+        });
+    }
+        /*let imgEl = document.createElement("img");
+        imgEl.classList.add("reveal", "from-" + directions[(i+1) % directions.length]);
         imgEl.src = "/app/media/" + img.immagine;
         imgEl.classList.add("gallery-image");
         imgEl.dataset.title = img.titolo;
+        let title = document.createElement("h3");
+        title.textContent = img.titolo;
+        title.classList.add("title", "reveal", "from-" + directions[(i + 2) % directions.length]);
+        let descrizione = document.createElement("p");
+        descrizione.textContent = img.descrizione;
+        descrizione.classList.add("descrizione", "reveal", "from-" + directions[(i + 3) % directions.length]);
         elimina = document.createElement("button");
         elimina.textContent = "Elimina";
         elimina.classList.add("elimina");
-        elimina.dataset.titolo = img.titolo;
+        elimina.dataset.title = img.titolo;
         elimina.addEventListener("click", onEliminaDestinazione);
         imgEl.dataset.title = img.titolo;
         trovaVoli = document.createElement("button");
         trovaVoli.textContent = "trova voli";
         trovaVoli.classList.add("trova-voli");
-        trovaVoli.dataset.titolo = img.titolo;
+        trovaVoli.dataset.title = img.titolo;
         trovaVoli.addEventListener("click", onTrovaVoliDestinazione);
         list.appendChild(imgEl);
+        list.appendChild(title);
+        list.appendChild(descrizione);
         list.appendChild(elimina);
         list.appendChild(trovaVoli);
     }
-    list.addEventListener("click", onImageClick);
+    list.addEventListener("click", onImageClick);*/
+
 }
 
 
@@ -157,3 +180,23 @@ closeModal.addEventListener("click", () => {
     let modal = document.querySelector("#modal .modal-content");
     modal.innerHTML = '<span class="close">&times;</span>';
 });
+
+
+window.addEventListener("scroll", revealSection);
+
+
+function revealSection() {
+    const reveals = document.querySelectorAll(".reveal");
+    for (const reveal of reveals) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveal.getBoundingClientRect().top;
+        let elementVisible = 150;
+        if (reveal.classList.contains("descrizione"))
+            elementVisible = -400;
+        if (elementTop < windowHeight - elementVisible) {
+            reveal.classList.add("active");
+          } else {
+            reveal.classList.remove("active");
+          }
+      }
+}
