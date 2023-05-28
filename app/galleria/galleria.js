@@ -33,17 +33,6 @@ function airportRequest(lat, lon) {
 
 // --------------------------------------------
 
-function showModal() {
-    const modal = document.querySelector("#modal");
-    modal.classList.remove("hidden");
-}
-
-function hideModal() {
-    const modal = document.querySelector("#modal");
-    modal.classList.add("hidden");
-}
-
-
 function onImageClick(event) {
     showLoader();
 
@@ -105,35 +94,6 @@ function onAlbumReturned(json) {
             }
         });
     }
-        /*let imgEl = document.createElement("img");
-        imgEl.classList.add("reveal", "from-" + directions[(i+1) % directions.length]);
-        imgEl.src = "/app/media/" + img.immagine;
-        imgEl.classList.add("gallery-image");
-        imgEl.dataset.title = img.titolo;
-        let title = document.createElement("h3");
-        title.textContent = img.titolo;
-        title.classList.add("title", "reveal", "from-" + directions[(i + 2) % directions.length]);
-        let descrizione = document.createElement("p");
-        descrizione.textContent = img.descrizione;
-        descrizione.classList.add("descrizione", "reveal", "from-" + directions[(i + 3) % directions.length]);
-        elimina = document.createElement("button");
-        elimina.textContent = "Elimina";
-        elimina.classList.add("elimina");
-        elimina.dataset.title = img.titolo;
-        elimina.addEventListener("click", onEliminaDestinazione);
-        imgEl.dataset.title = img.titolo;
-        trovaVoli = document.createElement("button");
-        trovaVoli.textContent = "trova voli";
-        trovaVoli.classList.add("trova-voli");
-        trovaVoli.dataset.title = img.titolo;
-        trovaVoli.addEventListener("click", onTrovaVoliDestinazione);
-        list.appendChild(imgEl);
-        list.appendChild(title);
-        list.appendChild(descrizione);
-        list.appendChild(elimina);
-        list.appendChild(trovaVoli);
-    }
-    list.addEventListener("click", onImageClick);*/
 
 }
 
@@ -144,6 +104,7 @@ function postImage(event) {
 
     // we show the loading animation and hide all the form, then scroll to bottom
     showLoader();
+    hide(modalAddDest);
     form.classList.add("hidden");
 
 
@@ -165,24 +126,26 @@ function postImage(event) {
 
 }
 
+function showModalAddDest(event) {
+    show(modalAddDest);
+}
+
 destRequest().then(onSuccess, onError).then(onAlbumReturned);
 
-postButton = document.querySelector("#post-button");
-
+const postButton = document.querySelector("#post-button");
 // prevent button from submitting form
 postButton.addEventListener("click", (event) => event.preventDefault());
-
 postButton.addEventListener("mouseup", postImage);
 
-closeModal = document.querySelector(".modal-content .close");
-closeModal.addEventListener("click", () => {
-    hideModal();
-    let modal = document.querySelector("#modal .modal-content");
-    modal.innerHTML = '<span class="close">&times;</span>';
-});
-
+const modalAddDest = document.querySelector("#modal-add-dest");
 
 window.addEventListener("scroll", revealSection);
+
+const addDestButton = document.querySelector("#aggiungi");
+addDestButton.addEventListener("click", showModalAddDest);
+
+const closeButton = document.querySelector("#close-button");
+closeButton.addEventListener("click", () => hide(modalAddDest));
 
 
 function revealSection() {

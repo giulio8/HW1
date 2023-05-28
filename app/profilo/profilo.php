@@ -1,3 +1,13 @@
+<?php
+
+require_once '../auth.php';
+
+// Check if the user is logged in, otherwise redirect to login page
+if (checkAuth() === 0) {
+    header("Location: ../login/login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
 

@@ -37,8 +37,8 @@ function flightRequest()
         //print_r($prenotazione);
         $id_volo = mysqli_real_escape_string($conn, $prenotazione['id']);
         $query = "SELECT * FROM Tratte WHERE volo = '$id_volo' AND direzione = 'andata' ORDER BY progressivo ASC";
-        $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
-        $tratta = mysqli_fetch_assoc($result);
+        $sub_result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+        $tratta = mysqli_fetch_assoc($sub_result);
         $tratte_andata = array();
         while ($tratta !== null) {
             $tratta['partenza'] = [
@@ -54,13 +54,13 @@ function flightRequest()
                 "at" => $tratta['data_arrivo']
             ];
             $tratte_andata[] = $tratta;
-            $tratta = mysqli_fetch_assoc($result);
+            $tratta = mysqli_fetch_assoc($sub_result);
         }
         $prenotazione['andata']['tratte'] = $tratte_andata;
 
         $query = "SELECT * FROM Tratte WHERE volo = '$id_volo' AND direzione = 'ritorno' ORDER BY progressivo ASC";
-        $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
-        $tratta = mysqli_fetch_assoc($result);
+        $sub_result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+        $tratta = mysqli_fetch_assoc($sub_result);
         $tratte_ritorno = array();
         while ($tratta !== null) {
             $tratta['partenza'] = [
@@ -76,7 +76,7 @@ function flightRequest()
                 "at" => $tratta['data_arrivo']
             ];
             $tratte_ritorno[] = $tratta;
-            $tratta = mysqli_fetch_assoc($result);
+            $tratta = mysqli_fetch_assoc($sub_result);
         }
         $prenotazione['ritorno']['tratte'] = $tratte_ritorno;
         $prenotazioni[] = $prenotazione;

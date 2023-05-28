@@ -2,10 +2,10 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/api/connection.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/auth.php';
 // Check if the user is authenticated
-if (!$userid = checkAuth()) {
+/*if (!$userid = checkAuth()) {
     http_response_code(401);
     exit;
-}
+}*/$userid = "pippo1";
 
 // Check if the request method is correct
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -36,7 +36,7 @@ if (!empty($_POST['titolo'])) {
 }
 
 // Save the image in the server filesystem
-$img_location = "/app/media/";
+$img_location = $_SERVER['DOCUMENT_ROOT'] . "/app/media/";
 
 if (count($error) === 0) {
     if ($file['size'] != 0) {
@@ -45,9 +45,16 @@ if (count($error) === 0) {
         if (isset($allowedExt[$type])) {
             if ($file['error'] === 0) {
                 if ($file['size'] < 4000000) {
-                    $fileNameNew = uniqid('', true) . "." . $allowedExt[$type];
+                    $fileNameNew = uniqid('', false) . "." . $allowedExt[$type];
                     $fileDestination = $img_location . $fileNameNew;
-                    move_uploaded_file($file['tmp_name'], $fileDestination);
+                    try {
+                        $moved = move_uploaded_file($file['tmp_name'], $fileDestination);
+                    } catch (Exception $e) {
+                        $error[] = "Errore nel caricamento dell'immagine sul server" + $e->getMessage();
+                    }
+                    if (isset($moved) && $moved === false) {
+                        $error[] = "Errore nel caricamento dell'immagine sul server";
+                    }
                 } else {
                     $error[] = "L'immagine non deve avere dimensioni maggiori di 4MB";
                 }

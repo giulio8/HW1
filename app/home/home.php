@@ -1,12 +1,9 @@
 <?php
 
 require_once '../auth.php';
-// Start the session
-session_start();
 
 // Check if the user is logged in, otherwise redirect to login page
 if (checkAuth() === 0) {
-    echo "da home a login";
     header("Location: ../login/login.php");
     exit;
 }

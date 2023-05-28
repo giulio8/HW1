@@ -1,3 +1,13 @@
+<?php
+
+require_once '../auth.php';
+
+// Check if the user is logged in, otherwise redirect to login page
+if (checkAuth() === 0) {
+    header("Location: ../login/login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -17,32 +27,38 @@
             </div>
         </header>
         <section>
-            <h2 class="subtitle">Galleria</h2>
+            <div class="sub-header">
+                <h2 class="subtitle">Galleria</h2>
+                <button class="app-button" id="aggiungi">Carica nuova destinazione</button>
+            </div>
             <p id="gallery">
             </p>
         </section>
 
-        <section id="post">
-            <h2 class="subtitle">Posta le tue foto</h2>
-            <form id="post-image-form" name="postImage">
-                <label for="img">Scegli una foto da postare!</label>
-                <input type="file" name="image" accept="image/png, image/jpeg">
-                <label for="titolo">Scegli un titolo</label>
-                <input type="text" name="titolo">
-                <label for="description">Inserisci una descrizione</label>
-                <input type="text" name="descrizione">
-                <button id="post-button">Posta</button>
-            </form>
-
-
-            <?php include '../loader/loader.php';
-            include '../message-display/message-display.php';
-            ?>
+        <?php include '../loader/loader.php';
+        include '../message-display/message-display.php';
+        ?>
         </section>
         <section>
-            <div id="modal" class="modal hidden">
+            <div id="modal-add-dest" class="app-modal hidden">
                 <div class="modal-content">
                     <span class="close">&times;</span>
+                    <form id="post-image-form" name="postImage">
+                        <div id="img-input" class="input">
+                            <label for="img">Scegli una foto da postare!</label>
+                            <input type="file" name="image" accept="image/png, image/jpeg">
+                        </div>
+                        <div id="title-input" class="input">
+                            <label for="titolo">Titolo</label>
+                            <input type="text" name="titolo" id="titolo" placeholder="Luogo di destinazione">
+                        </div>
+                        <div id="description-input" class="input">
+                            <label for="description">Inserisci una descrizione</label>
+                            <input type="text" name="descrizione">
+                        </div>
+                        <button id="post-button" class="app-button">Posta</button>
+                        <button id="close-button" class="app-dismiss-button">Annulla</button>
+                    </form>
                 </div>
         </section>
 

@@ -1,8 +1,10 @@
 :root {
-    --main-theme-color: cornflowerblue;
-    --secondary-theme-color: aliceblue;
-    --warning-theme-color: coral;
-    --base-font-size: 20px;
+  --main-theme-color: cornflowerblue;
+  --secondary-theme-color: aliceblue;
+  --warning-theme-color: coral;
+  --base-font-size: 20px;
+  --optimal-full-screen-width: 750px;
+  --large-full-screen-width: 1000px;
 }
 
 /* indispensabile per il corretto funzionamento del layout (comportamento del footer) */
@@ -20,6 +22,7 @@ body {
 .content {
   flex: 1;
 }
+
 /* ------------------------------ */
 
 html {
@@ -28,6 +31,7 @@ html {
 
 body {
   margin: 0;
+  font-size: var(--base-font-size);
 }
 
 .content {
@@ -36,7 +40,7 @@ body {
 }
 
 .hidden {
-    display: none !important;
+  display: none !important;
 }
 
 #introduction {
@@ -51,7 +55,8 @@ body {
   align-items: center;
 }
 
-.app-button {
+.app-button,
+.app-dismiss-button {
   padding: 10px;
   margin: 10px;
   font-size: var(--base-font-size);
@@ -64,6 +69,20 @@ body {
 
 .app-dismiss-button {
   background-color: var(--warning-theme-color);
+}
+
+.app-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {

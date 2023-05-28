@@ -30,12 +30,13 @@ $prezzo = $flight["prezzo"];
 $valuta = $flight["valuta"];
 $data_partenza = $flight["andata"]["tratte"][0]["partenza"]["at"];
 $data_arrivo = $flight["andata"]["tratte"][count($flight["andata"]["tratte"]) - 1]["arrivo"]["at"];
+$compagnia = $flight["compagnia"];
 
 
 
 if (!isset($http_code)) $http_code = 200;
 
-function saveFlightRequest($utente, $data_prenotazione, $origine, $destinazione, $prezzo, $valuta, $data_partenza, $data_arrivo)
+function saveFlightRequest($utente, $data_prenotazione, $origine, $destinazione, $prezzo, $valuta, $data_partenza, $data_arrivo, $compagnia)
 {
     global $conn, $error, $flight;
     mysqli_begin_transaction($conn);
@@ -47,10 +48,11 @@ function saveFlightRequest($utente, $data_prenotazione, $origine, $destinazione,
     $prezzo = mysqli_real_escape_string($conn, $prezzo);
     $data_partenza = mysqli_real_escape_string($conn, $data_partenza);
     $data_arrivo = mysqli_real_escape_string($conn, $data_arrivo);
+    $compagnia = mysqli_real_escape_string($conn, $compagnia);
     try {
     $query = "INSERT INTO Prenotazioni (id, prezzo, valuta, origine, destinazione, data_partenza, data_arrivo,
-    utente, data_prenotazione) VALUES ('$id', '$prezzo', '$valuta', '$origine',
-      '$destinazione', '$data_partenza', '$data_arrivo', '$utente', '$data_prenotazione')";
+    utente, data_prenotazione, compagnia) VALUES ('$id', '$prezzo', '$valuta', '$origine',
+      '$destinazione', '$data_partenza', '$data_arrivo', '$utente', '$data_prenotazione', '$compagnia')";
     mysqli_query($conn, $query) or die(mysqli_error($conn));
         foreach ($flight["andata"]["tratte"] as $i => $tratta) {
             $id_tratta = uniqid();
@@ -82,7 +84,7 @@ function saveFlightRequest($utente, $data_prenotazione, $origine, $destinazione,
 }
 
 
-if (saveFlightRequest($userId, $data_prenotazione, $origine, $destinazione, $prezzo, $valuta, $data_partenza, $data_arrivo) === false) {
+if (saveFlightRequest($userId, $data_prenotazione, $origine, $destinazione, $prezzo, $valuta, $data_partenza, $data_arrivo, $compagnia) === false) {
     $http_code = 500;
     $error[] = "Errore nella richiesta dei voli";
 } else {

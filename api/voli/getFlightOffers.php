@@ -31,8 +31,13 @@ $departureDate = $_GET["departureDate"];
 $returnDate = $_GET["returnDate"];
 
 // Get the IATA codes for the origin and destination
-$origin_code = airportRequest($origin)["iataCode"];
-$destination_code = airportRequest($destination)["iataCode"];
+try {
+    $origin_code = airportRequest($origin)["iataCode"];
+    $destination_code = airportRequest($destination)["iataCode"];
+} catch (Exception $e) {
+    $http_code = 500;
+    $error[] = "Errore nella richiesta dei codici IATA";
+}
 
 $city_map = array();
 if (!isset($http_code))
@@ -43,6 +48,7 @@ function flightRequest($origin_code, $destination_code, $departureDate, $returnD
     global $amadeus_access_token, $amadeus_hostname;
     $amadeus_access_token = refreshAccessToken();
     if ($amadeus_access_token == null) {
+        $error[] = "Errore di autenticazione";
         return null;
     }
     $curl = curl_init();
@@ -52,6 +58,7 @@ function flightRequest($origin_code, $destination_code, $departureDate, $returnD
     $response = curl_exec($curl);
     curl_close($curl);
     if ($response == false) {
+        $error[] = "Errore nella richiesta dei voli da Amadeus";
         return null;
     }
     $response = json_decode($response, true);
@@ -69,17 +76,28 @@ function getCityAndCountry($iataCode)
     return $row;
 }
 
-//$flights = flightRequest($origin_code, $destination_code, $departureDate, $returnDate);
-$flights = json_decode(file_get_contents("flights.json"), true)['data'];
-if ($flights === null) {
-    $http_code = 500;
-    $error[] = "Errore nella richiesta dei voli";
+$response = array();
+
+if (count($error) === 0) {
+    //$data = flightRequest($origin_code, $destination_code, $departureDate, $returnDate);
+    //$flights = $data['data'];
+    $flights = json_decode(file_get_contents("flights.json"), true)['data'];
+    if ($flights === null) {
+        $http_code = 500;
+        $error[] = "Errore nella richiesta dei voli";
+    } else if (count($flights) === 0) {
+        $error[] = "Nessun volo trovato";
+    } else {
+        //$dict = $data['dictionaries'];
+        $dict = json_decode(file_get_contents("flights.json"), true)['dictionaries'];
+    }
 }
 
 if (count($error) === 0) {
     $flights_resp = array();
     foreach ($flights as $flight) {
-        $flight_resp = ["id" => $flight['id'], "prezzo" => $flight['price']['total'], "valuta" => $flight['price']['currency']];
+        $comp = $dict['carriers'][$flight['itineraries'][0]['segments'][0]['carrierCode']];
+        $flight_resp = ["id" => $flight['id'], "prezzo" => $flight['price']['total'], "valuta" => $flight['price']['currency'], "solaAndata" => $flight['oneWay'], "postiDisponibili" => $flight["numberOfBookableSeats"], "compagnia" => $comp];
         foreach ($flight['itineraries'] as $idx => &$itinerary) {
             $segments = $itinerary['segments'];
             $itinerary_resp = array();
