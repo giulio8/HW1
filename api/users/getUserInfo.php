@@ -2,10 +2,10 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/api/connection.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/auth.php';
 // Check if the user is authenticated
-/* if (!$userid = checkAuth()) {
+if (!$userid = checkAuth()) {
     http_response_code(401);
     exit;
-} */$userId = "pippo1";
+} //echo $userid;
 
 // Check if the request method is correct
 if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
@@ -20,21 +20,29 @@ if (!isset($http_code))
 
 function userRequest()
 {
-    global $userId, $conn;
-    $utente = mysqli_real_escape_string($conn, $userId);
+    global $userid, $conn;
+    $utente = mysqli_real_escape_string($conn, $userid);
     $query = "SELECT username, email, firstname, lastname, birthdate FROM Utenti WHERE username = '$utente'";
     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
     $utente = mysqli_fetch_assoc($result);
-    $utente['age_majority'] = $utente['birthdate'] <= date('Y-m-d', strtotime('-18 years'));
-    return $utente;
+    if ($utente !== null) {
+        $utente['age_majority'] = $utente['birthdate'] <= date('Y-m-d', strtotime('-18 years'));
+        return $utente;
+    } else {
+        return null;
+    }
 }
 
 $utente = userRequest();
 
 if (count($error) === 0) {
-
-    header("Content-Type: application/json");
-    echo json_encode($utente);
+    if ($utente === null) {
+        $http_code = 404;
+        echo json_encode(array("message" => "Utente non trovato"));
+    } else {
+        header("Content-Type: application/json");
+        echo json_encode($utente);
+    }
 
 } else {
     http_response_code($http_code);

@@ -104,7 +104,33 @@ function loadContent() {
     getUserInfoRequest().then(onSuccess, onError).then(fillForm).catch(onErrorUsrReq);
 }
 
+function logout() {
+    location.href = "/app/logout.php";
+}
+
+function hideLogoutModal() {
+    hide(modalLogout);
+
+    const closeButton = modalLogout.querySelector("#close-button");
+    closeButton.removeEventListener("click", hideLogoutModal);
+    const confirmButton = modalLogout.querySelector("#confirm-button");
+    confirmButton.removeEventListener("click", logout);
+}
+
+function showLogoutModal() {
+    show(modalLogout);
+    const closeButton = modalLogout.querySelector("#close-button");
+    closeButton.addEventListener("click", hideLogoutModal);
+    const confirmButton = modalLogout.querySelector("#confirm-button");
+    confirmButton.addEventListener("click", logout);
+}
+
 const form = document.forms["user"];
 form.addEventListener("submit", e => e.preventDefault());
+
+const logoutButton = document.querySelector("#logout");
+logoutButton.addEventListener("click", showLogoutModal);
+
+const modalLogout = document.querySelector("#modal-logout");
 
 loadContent();

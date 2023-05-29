@@ -71,6 +71,27 @@ body {
   background-color: var(--warning-theme-color);
 }
 
+.app-logo-box {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/app/assets/logo-modificato.png);
+  border-radius: 50%;
+  padding: 75px 0;
+  background-size: cover;
+}
+
+.app-logo-box h1 {
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px rebeccapurple;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  margin: 20px;
+}
+
 .app-modal {
   position: fixed;
   top: 0;

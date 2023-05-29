@@ -15,7 +15,7 @@
     margin: 20px 0;
     font-size: 18px;
     font-weight: bold;
-    height: 100px;
+    color: yellow;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

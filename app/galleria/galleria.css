@@ -14,6 +14,7 @@
 }
 
 .destination {
+    height: 500px;
     display: flex;
     flex-direction: row;
     margin: 100px 0;
@@ -24,6 +25,7 @@
 }
 
 .gallery-image img {
+    height: 100%;
     max-width: 70vw;
     border-radius: 30px;
 }

@@ -1,5 +1,11 @@
+.sub-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 #user-form {
-    margin: 0 auto 20px auto;
+    margin: 40px auto 20px auto;
     padding: 20px;
     border: 3px solid var(--main-theme-color);
     border-radius: 25px;
@@ -52,6 +58,12 @@ div.input label {
     height: 30px;
     width: 30px;
     cursor: pointer;
+}
+
+.modal-content{
+    background: white;
+    padding: 30px;
+    border-radius: 30px;
 }
 
 @media (max-width: 768px) {

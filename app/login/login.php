@@ -1,42 +1,38 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/app/auth.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/api/connection.php";
-// Start the session
-session_start();
 
 // Check if the user is already logged in
 if (checkAuth()) {
-    echo "da login a home";
     header('Location: ../home/home.php');
     exit;
 }
 
-$username = $password = "";
-$username_err = $password_err = "";
+$error = array();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate username
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Inserisci il tuo username.";
-    } else{
+    if (empty(trim($_POST["username"]))) {
+        $error[] = "Inserisci il tuo username.";
+    } else {
         $username = trim($_POST["username"]);
     }
 
     // Validate password 
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Inserisci la tua password.";
-    } else{
+    if (empty(trim($_POST["password"]))) {
+        $error[] = "Inserisci la tua password.";
+    } else {
         $password = trim($_POST["password"]);
     }
 
     // Check for errors before sending the data to the server
-    if(empty($username_err) && empty($password_err)){
+    if (count($error) == 0) {
         // Check user data in the database
         // Prepare a select statement
         $username = mysqli_real_escape_string($conn, $username);
         $sql = "SELECT username, password FROM utenti WHERE username = '$username'";
         $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-        
+
         // Check if the username exists, if yes then verify the password
 
         if (mysqli_num_rows($res) > 0) {
@@ -51,46 +47,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
         // If the username doesn't exist or the password is wrong
-        $error = "Username e/o password errati.";
-    }
-    else if (isset($_POST["username"]) || isset($_POST["password"])) {
-        // If only one of the two is set
-        $error = "Inserisci username e password.";
+        $error[] = "Username e/o password errati.";
     }
 }
 
 ?>
 
-<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="login.css" />
-</head>
+
+<?php include "../head.php"; ?>
+
 <body>
+    <script>
+        let errors = new Set();
+        <?php
+        foreach ($error as $err) {
+            echo "errors.add(\"$err\");";
+        }
+        ?>
+    </script>
     <div class="content">
-    <h2>Login</h2>
-    <p>Please fill in your credentials to login.</p>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> ">
-        <div>
-            <label>Username</label>
-            <input type="text" name="username" value="<?php echo $username; ?>">
-            <span class="error"><?php echo $username_err; ?></span>
-        </div>    
-        <div>
-            <label>Password</label>
-            <input type="password" name="password">
-            <span class="error"><?php echo $password_err; ?></span>
-        </div>
-        <div>
-            <input type="submit" value="Login">
-        </div>
-    </form>
-    <a href="/app/signup/signup.php">Non sei ancora registrato? Registrati!</a>
-    <?php if (isset($error)) {
-                    echo "<p class='error'>$error</p>";
-                }
-    ?>
+        <section class="app-flex-centered">
+            <div id="form-box">
+                <div id="logo-container">
+                    <div class="app-logo-box">
+                        <h1 id="title">FlightBook</h1>
+                    </div>
+                </div>
+                <h1>Accedi</h1>
+                <?php include "../message-display/message-display.php"; ?>
+                <form id="login-form" name='login' method='post' enctype="multipart/form-data" autocomplete="off">
+                    <div class="input-container">
+                        <div id="username-input" class="input">
+                            <label for='username'>Nome utente</label>
+                            <input type='text' name='username' <?php if (isset($_POST["username"])) {
+                                echo "value=" . $_POST["username"];
+                            } ?>>
+                        </div>
+                        <div id="password-input" class="input">
+                            <label for='password'>Password</label>
+                            <input type='password' name='password' <?php if (isset($_POST["password"])) {
+                                echo "value=" . $_POST["password"];
+                            } ?>>
+                        </div>
+                    </div>
+                    <button type="submit" id="submit" class="app-button">Accedi</button>
+                </form>
+            </div>
+            <div class="signup">Non hai un account? <a href="/app/signup/signup.php">Registrati</a>
+        </section>
+
+    </div>
 </body>
+
+
 </html>

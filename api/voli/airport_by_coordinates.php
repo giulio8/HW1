@@ -14,7 +14,7 @@ function airportRequest($queryString) {
     } catch (Exception $e) {
         throw $e;
     }
-    /*
+    //
     global $amadeus_access_token, $amadeus_hostname;
     $amadeus_access_token = refreshAccessToken();
     if ($amadeus_access_token == null) {
@@ -34,9 +34,9 @@ function airportRequest($queryString) {
         return $response['data'][0];
     } else {
         throw new Exception("Errore nella richiesta degli aeroporti");
-    }*/
+    }//
 
-    return json_decode(file_get_contents("airport.json"), true);
+    //return json_decode(file_get_contents("airport.json"), true);
 }
 
 

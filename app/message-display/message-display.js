@@ -28,6 +28,12 @@ function hideMessages() {
     }
 }
 
+function hideMessage(event) {
+    console.log(event.currentTarget);
+    const message = event.currentTarget.parentElement;
+    hide(message);
+}
+
 const dismissIcons = document.querySelectorAll("#error .icon, #success .icon");
 for (const dismissIcon of dismissIcons) {
     dismissIcon.addEventListener("click", event => {
@@ -35,3 +41,7 @@ for (const dismissIcon of dismissIcons) {
         event.currentTarget.parentElement.querySelector("div").innerHTML = "";
     });
 }
+
+const closeMessageButtons = document.querySelectorAll(".close-message");
+for (const closeMessageButton of closeMessageButtons)
+    closeMessageButton.addEventListener("click", hideMessage);

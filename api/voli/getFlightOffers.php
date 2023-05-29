@@ -36,7 +36,7 @@ try {
     $destination_code = airportRequest($destination)["iataCode"];
 } catch (Exception $e) {
     $http_code = 500;
-    $error[] = "Errore nella richiesta dei codici IATA";
+    $error[] = $e->getMessage();
 }
 
 $city_map = array();
@@ -79,17 +79,17 @@ function getCityAndCountry($iataCode)
 $response = array();
 
 if (count($error) === 0) {
-    //$data = flightRequest($origin_code, $destination_code, $departureDate, $returnDate);
-    //$flights = $data['data'];
-    $flights = json_decode(file_get_contents("flights.json"), true)['data'];
+    $data = flightRequest($origin_code, $destination_code, $departureDate, $returnDate);
+    $flights = $data['data'];
+    //$flights = json_decode(file_get_contents("flights.json"), true)['data'];
     if ($flights === null) {
         $http_code = 500;
         $error[] = "Errore nella richiesta dei voli";
     } else if (count($flights) === 0) {
         $error[] = "Nessun volo trovato";
     } else {
-        //$dict = $data['dictionaries'];
-        $dict = json_decode(file_get_contents("flights.json"), true)['dictionaries'];
+        $dict = $data['dictionaries'];
+        //$dict = json_decode(file_get_contents("flights.json"), true)['dictionaries'];
     }
 }
 

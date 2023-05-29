@@ -24,6 +24,10 @@ if (checkAuth() === 0) {
                 </p>
             </div>
         </header>
+        <div class="sub-header">
+                <h2 class="subtitle">Modifica i tuoi dati</h2>
+                <button class="app-dismiss-button" id="logout">Disconnettiti</button>
+            </div>
         <section class="app-flex-centered">
             <form name='user' id="user-form" method='post' enctype="multipart/form-data" autocomplete="off">
                 <div id="username-input" class="input">
@@ -83,9 +87,11 @@ if (checkAuth() === 0) {
             <?php include '../loader/loader.php'; ?>
         </section>
         <section>
-            <div id="modal" class="modal hidden">
+        <div id="modal-logout" class="app-modal hidden">
                 <div class="modal-content">
-                    <span class="input">&times;</span>
+                    <p>Sei sicuro di voler uscire?</p>
+                        <button id="confirm-button" class="app-button">Conferma</button>
+                        <button id="close-button" class="app-dismiss-button">Annulla</button>
                 </div>
         </section>
 

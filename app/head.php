@@ -18,7 +18,7 @@ $filename = basename($_SERVER['PHP_SELF'], ".php");
     <link rel="stylesheet" href="<?php echo $filename ?>.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Pacifico:wght@300;400&display=swap" rel="stylesheet">
     <script src="/app/app.js" defer="True"></script>
     <script src="<?php echo $filename ?>.js" defer="True"></script>
 </head>
