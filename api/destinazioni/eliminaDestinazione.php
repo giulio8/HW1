@@ -2,10 +2,10 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/api/connection.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/auth.php';
 // Check if the user is authenticated
-/* if (!$userid = checkAuth()) {
+if (!$userId = checkAuth()) {
     http_response_code(401);
     exit;
-} */$userid = "pippo1";
+}
 
 // Check if the request method is correct
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -26,7 +26,7 @@ $titolo = mysqli_real_escape_string($conn, $_POST['titolo']);
 
 if (count($error) === 0) {
     // Check if the user is the owner of the destination and retrieve the image name
-    $username = mysqli_real_escape_string($conn, $userid);
+    $username = mysqli_real_escape_string($conn, $userId);
     $query = "SELECT immagine FROM destinazioni WHERE titolo = '$titolo' AND utente = '$username'";
     $res = mysqli_query($conn, $query);
     if (mysqli_num_rows($res) > 0) {

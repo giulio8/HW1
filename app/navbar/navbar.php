@@ -1,6 +1,7 @@
 <nav id="navbar">
         <img src="/app/assets/logo.png" alt="logo" id="logo">
         <div class="navbar-links-block">
+                <img class="menu-toggle" src="/app/assets/main-menu.png">
                 <div id="links">
                         <a href="/app/home/home.php" class='nav-link <?php if ($filename === "home") echo "selected"?>'>Home</a>
                         <a href="/app/galleria/galleria.php" class="nav-link <?php if ($filename === "galleria") echo "selected"?>">Galleria</a>

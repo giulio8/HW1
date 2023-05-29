@@ -22,16 +22,25 @@ function followMouse(event) {
 
 }
 
-navbar.addEventListener('mousemove', followMouse);
-navbar.addEventListener('mouseleave', goToPosition);
-window.addEventListener('resize', goToPosition);
-
 function goToPosition() {
     let linkOffsetLeft = selectedLink.getBoundingClientRect().left;
-    
+
     let basePosition = linkOffsetLeft + linkWidth / 2;
     const newX = basePosition - planeWidth / 2 - navbarRect.left;
     plane.style.transform = `translateX(${newX}px)`;
 }
 
+navbar.addEventListener('mousemove', followMouse);
+navbar.addEventListener('mouseleave', goToPosition);
+window.addEventListener('resize', goToPosition);
+
 goToPosition();
+
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('#links');
+
+menuToggle.addEventListener('click', function () {
+    document.body.classList.toggle('fix-body-scroll');
+    menu.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+});

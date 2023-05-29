@@ -2,10 +2,10 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/api/connection.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/auth.php';
 // Check if the user is authenticated
-/*if (!$userid = checkAuth()) {
+if (!$userId = checkAuth()) {
     http_response_code(401);
     exit;
-}*/$userid = "pippo1";
+}
 
 // Check if the request method is correct
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -21,7 +21,7 @@ if (empty($_POST['titolo']) ||  empty($_POST['descrizione'])) {
 }
 
 // Set the variables for the query
-$username = mysqli_real_escape_string($conn, $userid);
+$username = mysqli_real_escape_string($conn, $userId);
 $titolo = mysqli_real_escape_string($conn, $_POST['titolo']);
 $descrizione = mysqli_real_escape_string($conn, $_POST['descrizione']);
 $file = $_FILES['image'];

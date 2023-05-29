@@ -5,10 +5,10 @@ require_once "amadeus_refresh.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/auth.php';
 include "airport_by_coordinates.php";
 // Check if the user is authenticated
-/* if (!$userid = checkAuth()) {
+if (!$userId = checkAuth()) {
     http_response_code(401);
     exit;
-} */
+}
 
 // Check if the request method is correct
 if ($_SERVER['REQUEST_METHOD'] !== 'GET') {

@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/api/connection.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/auth.php';
 // Check if the user is authenticated
-if (!$userid = checkAuth()) {
+if (!$userId = checkAuth()) {
     http_response_code(401);
     exit;
 }
@@ -18,11 +18,11 @@ $error = array();
 
 function deleteUser()
 {
-    global $userid, $conn, $error;
+    global $userId, $conn, $error;
     if (count($error) === 0) {
         // delete the user from the database
-        $userid = mysqli_real_escape_string($conn, $userid);
-        $query = "DELETE FROM Utenti WHERE username = '$userid'";
+        $userId = mysqli_real_escape_string($conn, $userId);
+        $query = "DELETE FROM Utenti WHERE username = '$userId'";
 
         if (mysqli_query($conn, $query)) {
             mysqli_close($conn);

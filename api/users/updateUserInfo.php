@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/api/connection.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/auth.php';
 
-if (!$userid = checkAuth()) {
+if (!$userId = checkAuth()) {
     http_response_code(401);
     exit;
 }
@@ -32,7 +32,7 @@ if (!(empty($_POST["firstname"]) && empty($_POST["lastname"]) && empty($_POST["b
         $query .= "$key = '$value', ";
     }
     $query = substr($query, 0, -2);
-    $query .= "WHERE username = '$userid'";
+    $query .= "WHERE username = '$userId'";
 
     if (mysqli_query($conn, $query) or die(mysqli_error($conn))) {
         mysqli_close($conn);

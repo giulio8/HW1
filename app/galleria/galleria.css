@@ -59,7 +59,9 @@
 }
 
 .destination .text {
-    padding: 20px;
+    padding: 20px;    
+    overflow: scroll;
+    height: 100%;
 }
 
 #post-image-form {

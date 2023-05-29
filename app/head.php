@@ -5,9 +5,8 @@ $filename = basename($_SERVER['PHP_SELF'], ".php");
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HW1</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HW1</title>
     <link rel="stylesheet" href="/app/bootstrap-collapse.min.css">
     <link rel="stylesheet" href="/app/app.css">
     <link rel="stylesheet" href="/app/message-display/message-display.css">

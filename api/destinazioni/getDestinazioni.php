@@ -4,12 +4,12 @@
 ********************************************************/
 require_once $_SERVER['DOCUMENT_ROOT'] . '/api/connection.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/app/auth.php';
-if (!$userid = checkAuth()) {
+if (!$userId = checkAuth()) {
         http_response_code(401);
         exit;
     };
 
-$username = mysqli_real_escape_string($conn, $userid);
+$username = mysqli_real_escape_string($conn, $userId);
 
 $query = "SELECT titolo, descrizione, immagine from Destinazioni WHERE utente = '$username'";
 $res = mysqli_query($conn, $query) or die(mysqli_error($conn));
